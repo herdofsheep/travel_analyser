@@ -4,6 +4,7 @@ repos:
   hooks:
   - id: isort
     args: ["--profile", "black"]
+    args: [--line-length=114]
     name: isort
     stages: [commit]
     language: system
@@ -12,6 +13,7 @@ repos:
 
   - id: black
     name: black
+    args: [--line-length=114]
     stages: [commit]
     language: system
     entry: pipenv run black

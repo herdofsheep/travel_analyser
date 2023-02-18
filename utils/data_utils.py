@@ -1,17 +1,26 @@
 import math
 import os
 from datetime import datetime
-from typing import Dict
+from typing import Any, Dict
 
 import pandas as pd
 
 
-def match(thing_one: str, thing_two: str) -> bool:
-    return thing_one.lower().strip() == thing_two.lower().strip()
+def string_match(thing_one: str, thing_two: str) -> bool:
+    if is_empty_cell(thing_one) or is_empty_cell(thing_two):
+        return False
+    return thing_one.lower().strip().replace("-", "").replace(" ", "") == thing_two.lower().strip().replace(
+        "-", ""
+    ).replace(" ", "")
 
 
-def is_empty_cell(entry: float) -> bool:
-    return False if str(entry) != "nan" else bool(math.isnan(entry))
+def is_empty_cell(entry: Any) -> bool:
+    if str(entry) != "nan":
+        return False
+    if math.isnan(float(entry)):
+        return True
+    else:
+        return False
 
 
 def load_excel_file_all_sheets_df(file_path: str, file_name: str) -> Dict:
@@ -31,7 +40,7 @@ def load_excel_file_all_sheets_df(file_path: str, file_name: str) -> Dict:
     return db_output
 
 
-def save_df_to_csv(name, df, path="script_outputs", with_date=False):
+def save_df_to_csv(name, df, path=".outputs", with_date=False):
     name.replace(".csv", "")
 
     if with_date:

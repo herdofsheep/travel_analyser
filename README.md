@@ -1,5 +1,5 @@
 # travel_analyser
-analyser of travel data
+analyser of travel data. Follow the instuctions below for 
 
 ### First time running travel_analyser:
 Use pipenv to handle dependencies and keep a consistent python environment across machines.
@@ -17,7 +17,7 @@ eg. `pipenv --python /usr/bin/python3`
 
 `pipenv shell`
 `export PYTHONPATH=$PYTHONPATH:$PWD`
-`python3 travel_analyser/process_travel_data.py`
+`travel_analyser_service/process_travel_data.py`
 
 ### Testing:
 
@@ -30,3 +30,6 @@ eg. `pipenv --python /usr/bin/python3`
 Before committing to the travel_analyser repo, please run `pre-commit install`.
 See [here](https://pre-commit.com/#usage) for more info and help if pre-commit is not installed on your machine.
 
+## What I would like to cover given more time:
+
+[Click here for info about extending and improving the project, given more time](/docs/EXTENSION_AND_FLAWS.md)

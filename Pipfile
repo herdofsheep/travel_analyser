@@ -16,5 +16,6 @@ pytest = "*"
 
 [packages]
 pandas = "*"
+openpyxl = "*"
 
 
