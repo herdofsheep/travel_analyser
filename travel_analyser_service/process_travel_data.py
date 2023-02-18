@@ -22,6 +22,7 @@ class DataParser:
 
     def process_data(self, file_name: str) -> pd.DataFrame:
         """A function to collect and clean travel data and combine data to enable calculations of emission data."""
+        print(f"Starting data parsing for {file_name}")
 
         output_data = self.get_data_from_file(file_name)
         for row in output_data:
@@ -45,6 +46,8 @@ class DataParser:
         return pd.DataFrame.from_dict(output_data)
 
     def get_data_from_file(self, file_name: str) -> Dict:
+        """A function to read data from provided sheet- not very flexible! Requires sheets with specific names."""
+        print("Collecting and separating data for initial parse...")
         file = load_excel_file_all_sheets_df(".data", file_name)
 
         travel_df = file["Data"].to_dict("records")
@@ -147,8 +150,9 @@ class DataParser:
         return emissions_per_km_rate, distance_km
 
     def calculate_emissions_from_distance(self, row: Dict) -> Tuple[float, float]:
-        # sourcery skip: raise-specific-error
-        # function only accepts rows with two locations (and so calculable distance from 'Locations' sheet) have '-' delimiter so use that as a filter.
+        """Function to use distance information to calculate emissions.
+        Only accepts rows with two locations (and so calculable distance from 'Locations' sheet)
+        All rows with two locations have a '-' delimiter so uses that as a filter."""
         if "-" not in str(row["Unnamed: 4"]):
             message = "Distance emissions calculator requires two locations"
             print(message)
