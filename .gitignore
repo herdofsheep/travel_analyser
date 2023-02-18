@@ -1,3 +1,9 @@
+# repo specific folders
+
+.outputs/*
+
+### auto-generated python exclusions from here ... ###
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
