@@ -2,7 +2,7 @@
 analyser of travel data. 
 Follow the instuctions below for setting up and running the travel_analyser- the output
 is in the form of a .csv file in the .outputs folder. 
-If you would like to try processing other files, make sure the data you want to process exists in the `.data` folder and
+If you would like to try processing other files, make sure the execl file you want to process exists in the `.data` folder and
 pass its name to `data_parser.process_data("file_name here")` within the `main()` function in process_tavel_data.py.
 
 ### First time running travel_analyser:
